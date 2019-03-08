@@ -17,8 +17,27 @@ echo ""
 echo ""
 
 
+echo "elm-node --example-js"
+../index.js --example-js
+
+echo ""
+echo ""
+
+echo "elm-node --example-elm"
+../index.js --example-elm
+
+echo ""
+echo ""
+
+
 echo "elm-node src/Main.elm"
 ../index.js src/Main.elm
+
+echo ""
+echo ""
+
+echo "elm-node src/Main.elm --optimize"
+../index.js src/Main.elm --optimize
 
 echo ""
 echo ""

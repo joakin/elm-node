@@ -9,7 +9,36 @@ const elmOutput = "elm.js";
 const userJS = "user.js";
 const indexJS = "index.js";
 
-const usage = `elm-node [--js index.js] [--optimize] [--help] Main.elm [Main2.elm, ...]`;
+const exampleJS = `
+module.exports = Elm => {
+  const app = Elm.MainWithJs.init();
+  app.ports.log && app.ports.log.subscribe(console.log);
+};
+`;
+
+const exampleElm = `
+port module Main exposing (log, main)
+
+import Platform exposing (worker)
+
+
+port log : String -> Cmd msg
+
+
+main =
+    worker
+        { init = \() -> ( 0, log "Main application initialized" )
+        , subscriptions = \_ -> Sub.none
+        , update = \msg model -> ( model, Cmd.none )
+        }
+`;
+
+const usage = `elm-node [--js index.js] [--optimize] Main.elm [Main2.elm, ...]
+
+If you need help or bootstrapping examples:
+
+  elm-node [--help|--example-elm|--example-js]
+`;
 
 function exitUsage(code = 1) {
   console.log(usage);
@@ -18,10 +47,19 @@ function exitUsage(code = 1) {
 
 const argv = require("minimist")(process.argv.slice(2), {
   string: ["js"],
-  boolean: ["optimize", "help"]
+  boolean: ["optimize", "help", "example-elm", "example-js"]
 });
 
 if (argv.help) exitUsage(0);
+
+if (argv["example-js"]) {
+  console.log(exampleJS);
+  process.exit(0);
+}
+if (argv["example-elm"]) {
+  console.log(exampleElm);
+  process.exit(0);
+}
 
 if (argv._.length < 1) exitUsage();
 const elmFiles = argv._;
@@ -59,7 +97,9 @@ js(Elm);
 `
     : `
 const app = Elm.Main.init();
+global.app = app;
 app.ports.log && app.ports.log.subscribe(console.log);
+app.ports.eval && app.ports.eval.subscribe(eval);
 `
 }
 `;
