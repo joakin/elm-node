@@ -1,12 +1,18 @@
 # elm-node
 
-A node.js CLI tool for easily running your elm applications.
+A Node.js CLI tool for easily running your elm code.
 
 ```
 elm init
 elm-node --example-elm > src/Main.elm
 elm-node src/Main.elm
 ```
+
+**Warning**: This isn't neither a beginner tool, nor the intended default Elm
+experience. If you want to experiment, use `elm repl` or `elm-reactor`. Using
+the `elm` CLI with `--output=index.html` is also a very easy way to try things.
+Really evaluate if you want or need node.js. You will need to be familiar and
+fluent in both node.js and Elm to make good use of this tool.
 
 ## Usage
 
