@@ -99,7 +99,7 @@ js(Elm);
 const app = Elm.Main.init();
 global.app = app;
 app.ports.log && app.ports.log.subscribe(console.log);
-app.ports.eval && app.ports.eval.subscribe(eval);
+app.ports.eval && app.ports.eval.subscribe(code => eval(code));
 `
 }
 `;
