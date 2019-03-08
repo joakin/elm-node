@@ -1,0 +1,39 @@
+#!/bin/bash
+
+cd example/
+rm -rf elm-node-stuff/*
+
+echo "elm-node"
+../index.js
+
+echo ""
+echo ""
+
+
+echo "elm-node --help"
+../index.js --help
+
+echo ""
+echo ""
+
+
+echo "elm-node src/Main.elm"
+../index.js src/Main.elm
+
+echo ""
+echo ""
+
+echo "elm-node --js src/MainWithJs.js src/MainWithJs.elm"
+../index.js --js src/MainWithJs.js src/MainWithJs.elm
+
+echo ""
+echo ""
+
+echo "elm-node src/MainThatDoesntCompile.elm"
+../index.js src/MainThatDoesntCompile.elm
+
+echo ""
+echo ""
+
+echo "elm-node --js src/MainWithJs.js src/Main.elm src/MainWithJs.elm"
+../index.js --js src/MainWithJs.js src/Main.elm src/MainWithJs.elm
