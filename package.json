@@ -29,6 +29,6 @@
   "homepage": "https://github.com/joakin/elm-node#readme",
   "dependencies": {
     "minimist": "^1.2.0",
-    "node-elm-compiler": "^5.0.3"
+    "node-elm-compiler": "^5.0.4"
   }
 }
