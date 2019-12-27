@@ -82,6 +82,7 @@ compile(elmFiles, {
     if (argv.js)
       fs.writeFileSync(path.join(dir, userJS), fs.readFileSync(argv.js));
     fs.writeFileSync(index, makeIndexJs(argv.js));
+    console.log(`    node.js entrypoint ───> ${index}\n`);
     require(path.resolve(index));
   }
 });
