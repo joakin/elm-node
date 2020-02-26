@@ -37,6 +37,15 @@ elm-node --example-elm > src/Main.elm
 elm-node src/Main.elm
 ```
 
+#### Running arbitrary JS
+
+With the basic setup there is also a port `eval` subscribed to on the JS side
+that will run the code it receives. On the JS side there is also a global `app`
+variable that you can use in your JS code string to send events back to Elm. Not
+the most fancy way to interact with JS, but it gets the job done.
+
+If you want to do something more complex see the custom setup below.
+
 ### Custom JS setup
 
 Similar to the previous setup, but you can provide a custom JS file that will
